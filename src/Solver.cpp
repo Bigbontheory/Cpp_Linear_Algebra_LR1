@@ -3,27 +3,6 @@
 
 Vector Solver::solve_gauss(Matrix a, Vector b) {
     int n = a.get_size();
-
-    for (int k = 0; k < n; ++ k) {
-        if (std::abs(a.at(k, k)) < 1e-15) {
-            throw std::runtime_error("Нулевой ведущий элемент в обычном Гауссе!");
-        }
-
-        for (int i = k + 1; i < n; ++i) {
-            double factor = a.at(i, k) / a.at(k, k);
-
-            for (int j = k; j < n; ++j) {
-                a.at(i, j) -= factor * a.at(k, j);
-            }
-            b[i] -= factor * b[k];
-        }
-    }
-
-    return back_substitution(a, b);
-}
-
-Vector Solver::solve_gauss_pivot(Matrix a, Vector b) {
-    int n = a.get_size();
   
     for (int k = 0; k < n; ++k) {
         double max_val = std::abs(a.at(k, k));

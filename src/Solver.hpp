@@ -5,7 +5,6 @@
 class Solver {
 public:
     static Vector solve_gauss(Matrix a, Vector b);
-    static Vector solve_gauss_pivot(Matrix a, Vector b);
 
     struct lu_result {
         Matrix l;
